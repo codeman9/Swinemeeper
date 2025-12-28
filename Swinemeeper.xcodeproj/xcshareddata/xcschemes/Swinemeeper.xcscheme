@@ -36,8 +36,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "E8A1B2C02D0F123400000001"
-               BuildableName = "SwinemeperTests.xctest"
-               BlueprintName = "SwinemeperTests"
+               BuildableName = "SwineMeeperTests.xctest"
+               BlueprintName = "SwineMeeperTests"
                ReferencedContainer = "container:Swinemeeper.xcodeproj">
             </BuildableReference>
          </TestableReference>
