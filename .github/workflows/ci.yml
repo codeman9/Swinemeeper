@@ -1,0 +1,93 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, 'claude/**' ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    name: Build and Test
+    runs-on: macos-15
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: List available Xcode versions
+      run: ls -la /Applications/ | grep -i xcode
+
+    - name: Select latest Xcode
+      run: |
+        # Find and select the latest Xcode version (preferring beta for iOS 26 support)
+        if [ -d "/Applications/Xcode_26_beta.app" ]; then
+          sudo xcode-select -s /Applications/Xcode_26_beta.app/Contents/Developer
+        elif [ -d "/Applications/Xcode_26.0_beta.app" ]; then
+          sudo xcode-select -s /Applications/Xcode_26.0_beta.app/Contents/Developer
+        elif [ -d "/Applications/Xcode-26-beta.app" ]; then
+          sudo xcode-select -s /Applications/Xcode-26-beta.app/Contents/Developer
+        elif [ -d "/Applications/Xcode-beta.app" ]; then
+          sudo xcode-select -s /Applications/Xcode-beta.app/Contents/Developer
+        else
+          # Fall back to latest available Xcode
+          LATEST_XCODE=$(ls -d /Applications/Xcode*.app 2>/dev/null | sort -V | tail -1)
+          if [ -n "$LATEST_XCODE" ]; then
+            sudo xcode-select -s "$LATEST_XCODE/Contents/Developer"
+          fi
+        fi
+
+    - name: Show Xcode version
+      run: xcodebuild -version
+
+    - name: Show available simulators
+      run: xcrun simctl list devices available
+
+    - name: Build
+      run: |
+        # Find the latest iOS simulator available
+        LATEST_IOS=$(xcrun simctl list runtimes | grep -o 'iOS [0-9.]*' | sort -V | tail -1 | sed 's/iOS //')
+        echo "Using iOS version: $LATEST_IOS"
+
+        xcodebuild build \
+          -scheme Swinemeeper \
+          -destination "platform=iOS Simulator,name=iPhone 16,OS=$LATEST_IOS" \
+          -configuration Debug \
+          CODE_SIGN_IDENTITY="" \
+          CODE_SIGNING_REQUIRED=NO \
+          | xcpretty && exit ${PIPESTATUS[0]}
+
+    - name: Run Tests
+      run: |
+        # Find the latest iOS simulator available
+        LATEST_IOS=$(xcrun simctl list runtimes | grep -o 'iOS [0-9.]*' | sort -V | tail -1 | sed 's/iOS //')
+        echo "Using iOS version: $LATEST_IOS"
+
+        xcodebuild test \
+          -scheme Swinemeeper \
+          -destination "platform=iOS Simulator,name=iPhone 16,OS=$LATEST_IOS" \
+          -configuration Debug \
+          -resultBundlePath TestResults \
+          CODE_SIGN_IDENTITY="" \
+          CODE_SIGNING_REQUIRED=NO \
+          2>&1 | tee xcodebuild.log | xcpretty --report junit --output test-results.xml && exit ${PIPESTATUS[0]}
+
+    - name: Show test log on failure
+      if: failure()
+      run: |
+        echo "=== Full xcodebuild log ==="
+        cat xcodebuild.log || true
+        echo ""
+        echo "=== Test results XML ==="
+        cat test-results.xml || true
+
+    - name: Upload test results
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-results
+        path: |
+          TestResults
+          test-results.xml
+          xcodebuild.log
