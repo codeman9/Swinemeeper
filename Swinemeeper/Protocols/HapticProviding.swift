@@ -12,7 +12,8 @@ enum HapticType: Sendable {
 }
 
 /// Protocol for providing haptic feedback
-protocol HapticProviding: Sendable {
+@MainActor
+protocol HapticProviding {
     /// Trigger haptic feedback
     func trigger(_ type: HapticType)
 }
