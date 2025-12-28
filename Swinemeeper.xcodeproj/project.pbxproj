@@ -122,7 +122,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				E8A1B2C32D0F123400000001 /* PBXTargetDependency */,
+				E8A1B2C52D0F123400000001 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				E8A1B2C42D0F123400000001 /* SwinemeperTests */,
@@ -208,7 +208,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		E8A1B2C32D0F123400000001 /* PBXTargetDependency */ = {
+		E8A1B2C52D0F123400000001 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E8A1B2AA2D0F123400000001 /* Swinemeeper */;
 			targetProxy = E8A1B2C32D0F123400000001 /* PBXContainerItemProxy */;
