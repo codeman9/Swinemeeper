@@ -68,6 +68,26 @@ jobs:
           -scheme Swinemeeper \
           -destination "platform=iOS Simulator,name=iPhone 16,OS=$LATEST_IOS" \
           -configuration Debug \
+          -resultBundlePath TestResults \
           CODE_SIGN_IDENTITY="" \
           CODE_SIGNING_REQUIRED=NO \
-          | xcpretty && exit ${PIPESTATUS[0]}
+          2>&1 | tee xcodebuild.log | xcpretty --report junit --output test-results.xml && exit ${PIPESTATUS[0]}
+
+    - name: Show test log on failure
+      if: failure()
+      run: |
+        echo "=== Full xcodebuild log ==="
+        cat xcodebuild.log || true
+        echo ""
+        echo "=== Test results XML ==="
+        cat test-results.xml || true
+
+    - name: Upload test results
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-results
+        path: |
+          TestResults
+          test-results.xml
+          xcodebuild.log
