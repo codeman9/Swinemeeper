@@ -82,11 +82,13 @@ struct BoardGeneratorTests {
     @Test("Uses injected random generator")
     func usesInjectedRandomGenerator() {
         let mockRandom = MockRandomNumberGenerator()
-        // Return positions in reverse order (deterministic)
+        // Mock returns positions in reverse order (deterministic)
         let generator = BoardGenerator(randomGenerator: mockRandom)
 
-        let board = Board(rows: 3, columns: 3, mineCount: 1)
-        let result = generator.placeMines(on: board, avoiding: Position(row: 1, column: 1))
+        // Use a 5x5 board with corner safe position to ensure available positions exist
+        // Safe zone at (0,0) covers 4 cells, leaving 21 available for mines
+        let board = Board(rows: 5, columns: 5, mineCount: 1)
+        let result = generator.placeMines(on: board, avoiding: Position(row: 0, column: 0))
 
         // Should have exactly 1 mine
         #expect(result.allCells.filter(\.hasMine).count == 1)
