@@ -60,7 +60,7 @@ This project follows **SOLID principles** with **protocol composition**:
 
 ## Requirements
 
-- iOS 26.0+
+- iOS 18.0+
 - Xcode 16.2+
 - Swift 6.0
 
