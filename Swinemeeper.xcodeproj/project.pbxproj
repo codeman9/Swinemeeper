@@ -21,7 +21,7 @@
 
 /* Begin PBXFileReference section */
 		E8A1B2AB2D0F123400000001 /* Swinemeeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swinemeeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E8A1B2C12D0F123400000001 /* SwinemeperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwinemeperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8A1B2C12D0F123400000001 /* SwineMeeperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwineMeeperTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -43,9 +43,9 @@
 			path = Swinemeeper;
 			sourceTree = "<group>";
 		};
-		E8A1B2C42D0F123400000001 /* SwinemeperTests */ = {
+		E8A1B2C42D0F123400000001 /* SwineMeeperTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = SwinemeperTests;
+			path = SwineMeeperTests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -72,7 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				E8A1B2AD2D0F123400000001 /* Swinemeeper */,
-				E8A1B2C42D0F123400000001 /* SwinemeperTests */,
+				E8A1B2C42D0F123400000001 /* SwineMeeperTests */,
 				E8A1B2AC2D0F123400000001 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -81,7 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				E8A1B2AB2D0F123400000001 /* Swinemeeper.app */,
-				E8A1B2C12D0F123400000001 /* SwinemeperTests.xctest */,
+				E8A1B2C12D0F123400000001 /* SwineMeeperTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -111,9 +111,9 @@
 			productReference = E8A1B2AB2D0F123400000001 /* Swinemeeper.app */;
 			productType = "com.apple.product-type.application";
 		};
-		E8A1B2C02D0F123400000001 /* SwinemeperTests */ = {
+		E8A1B2C02D0F123400000001 /* SwineMeeperTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E8A1B2D12D0F123400000001 /* Build configuration list for PBXNativeTarget "SwinemeperTests" */;
+			buildConfigurationList = E8A1B2D12D0F123400000001 /* Build configuration list for PBXNativeTarget "SwineMeeperTests" */;
 			buildPhases = (
 				E8A1B2BD2D0F123400000001 /* Sources */,
 				E8A1B2BE2D0F123400000001 /* Frameworks */,
@@ -125,13 +125,13 @@
 				E8A1B2C52D0F123400000001 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				E8A1B2C42D0F123400000001 /* SwinemeperTests */,
+				E8A1B2C42D0F123400000001 /* SwineMeeperTests */,
 			);
-			name = SwinemeperTests;
+			name = SwineMeeperTests;
 			packageProductDependencies = (
 			);
-			productName = SwinemeperTests;
-			productReference = E8A1B2C12D0F123400000001 /* SwinemeperTests.xctest */;
+			productName = SwineMeeperTests;
+			productReference = E8A1B2C12D0F123400000001 /* SwineMeeperTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -168,7 +168,7 @@
 			projectRoot = "";
 			targets = (
 				E8A1B2AA2D0F123400000001 /* Swinemeeper */,
-				E8A1B2C02D0F123400000001 /* SwinemeperTests */,
+				E8A1B2C02D0F123400000001 /* SwineMeeperTests */,
 			);
 		};
 /* End PBXProject section */
@@ -407,7 +407,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.swinemeeper.SwinemeperTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.swinemeeper.SwineMeeperTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_STRICT_CONCURRENCY = complete;
@@ -427,7 +427,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.swinemeeper.SwinemeperTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.swinemeeper.SwineMeeperTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_STRICT_CONCURRENCY = complete;
@@ -458,7 +458,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E8A1B2D12D0F123400000001 /* Build configuration list for PBXNativeTarget "SwinemeperTests" */ = {
+		E8A1B2D12D0F123400000001 /* Build configuration list for PBXNativeTarget "SwineMeeperTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E8A1B2D22D0F123400000001 /* Debug */,
