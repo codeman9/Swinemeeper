@@ -29,8 +29,4 @@ final class GameTimer: TimerProviding {
     func reset() {
         stop()
     }
-
-    deinit {
-        timer?.invalidate()
-    }
 }
