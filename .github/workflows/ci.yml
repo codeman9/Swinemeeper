@@ -5,6 +5,7 @@ on:
     branches: [ main, 'claude/**' ]
   pull_request:
     branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   build-and-test:
@@ -15,8 +16,8 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Select Xcode
-      run: sudo xcode-select -s /Applications/Xcode_16.2.app/Contents/Developer
+    - name: Select Xcode 26
+      run: sudo xcode-select -s /Applications/Xcode_26.app/Contents/Developer
 
     - name: Show Xcode version
       run: xcodebuild -version
@@ -28,7 +29,7 @@ jobs:
       run: |
         xcodebuild build \
           -scheme Swinemeeper \
-          -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.2' \
+          -destination 'platform=iOS Simulator,name=iPhone 16,OS=26.0' \
           -configuration Debug \
           CODE_SIGN_IDENTITY="" \
           CODE_SIGNING_REQUIRED=NO \
@@ -38,7 +39,7 @@ jobs:
       run: |
         xcodebuild test \
           -scheme Swinemeeper \
-          -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.2' \
+          -destination 'platform=iOS Simulator,name=iPhone 16,OS=26.0' \
           -configuration Debug \
           CODE_SIGN_IDENTITY="" \
           CODE_SIGNING_REQUIRED=NO \
